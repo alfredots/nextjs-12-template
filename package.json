@@ -1,5 +1,5 @@
 {
-  "name": "twdnext",
+  "name": "next-12-template",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "prepare": "chmod +x ./node_modules/husky/lib/bin.js && chmod +x ./husky/pre-commit && husky install",
+    "prepare": "husky install",
+    "prepare-husky": "chmod +x ./node_modules/husky/lib/bin.js && chmod +x ./.husky/pre-commit",
     "code:check": "eslint ./src --ext .ts,.tsx --report-unused-disable-directives --max-warnings=0",
     "code:format": "eslint ./src --ext .ts,.tsx --fix"
   },
@@ -38,6 +39,7 @@
     "eslint-plugin-react-refresh": "^0.4.1",
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
     "typescript": "^5.1.3"
   }
 }
