@@ -49,3 +49,7 @@ components
    |-- styles.ts
    |-- index.tsx
 ```
+
+## Componentes
+Caso precise criar alguns componentes a biblioteca abaixo pode ajudar:
+[Headless UI](https://headlessui.com)
