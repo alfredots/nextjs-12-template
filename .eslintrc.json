@@ -27,7 +27,8 @@
   },
   "plugins": [
     "react",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "import-helpers"
   ],
   "rules": {
     "react/no-unescaped-entities": "off",
@@ -36,6 +37,28 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@next/next/no-img-element": "off",
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always", // Cria uma nova linha para separar as importacoes
+        "groups": [
+          ["/^react/", "/^next/"],
+          "module",
+          "/^@shared/",
+          "absolute",
+          "/^components/",
+          "/^pages/",
+          "/utils/",
+          "/constants/",
+          "/^store/",
+          "/^styles/",
+          "/^templates/",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
   }
 }
