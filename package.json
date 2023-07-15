@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "jest",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "prepare": "husky install",
     "prepare-husky": "chmod +x ./node_modules/husky/lib/bin.js && chmod +x ./.husky/pre-commit",
