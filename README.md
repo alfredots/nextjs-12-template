@@ -1,6 +1,7 @@
 ## TODO
-[] Instalar clsx.
-
+[x] Instalar clsx
+[] Instalar testes unitários
+[] Instalar storybook na pasta docs
 
 ## Estrutura de pastas
 
