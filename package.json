@@ -8,11 +8,15 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "prepare": "husky install",
     "prepare-husky": "chmod +x ./node_modules/husky/lib/bin.js && chmod +x ./.husky/pre-commit",
     "code:check": "eslint ./src --ext .ts,.tsx --report-unused-disable-directives --max-warnings=0",
-    "code:format": "eslint ./src --ext .ts,.tsx --fix"
+    "code:format": "eslint ./src --ext .ts,.tsx --fix",
+    "plop": "plop",
+    "generate": "npm run plop --plopfile plopfile.js"
   },
   "dependencies": {
     "@types/node": "20.1.4",
@@ -31,6 +35,13 @@
     "tailwindcss": "3.3.2"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.27",
+    "@storybook/addon-interactions": "^7.0.27",
+    "@storybook/addon-links": "^7.0.27",
+    "@storybook/blocks": "^7.0.27",
+    "@storybook/nextjs": "^7.0.27",
+    "@storybook/react": "^7.0.27",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
@@ -44,11 +55,14 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
+    "eslint-plugin-storybook": "^0.6.12",
     "husky": "^8.0.3",
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",
+    "plop": "^3.1.2",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
+    "storybook": "^7.0.27",
     "typescript": "^5.1.3"
   }
 }
