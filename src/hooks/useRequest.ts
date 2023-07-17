@@ -3,9 +3,12 @@ import { useCallback, useEffect, useState } from 'react'
 
 import { AxiosResponse } from 'axios'
 
-export const useRequest = <T>(
+type UseRequestProps<T> = {
   request: () => Promise<AxiosResponse<T, any>>
-) => {
+  body?: any
+}
+
+export const useRequest = <T>({ request }: UseRequestProps<T>) => {
   const [data, setData] = useState<T>()
   const [isLoading, setIsLoading] = useState(false)
 
