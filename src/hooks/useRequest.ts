@@ -4,11 +4,14 @@ import { useCallback, useEffect, useState } from 'react'
 import { AxiosResponse } from 'axios'
 
 type UseRequestProps<T> = {
-  request: () => Promise<AxiosResponse<T, any>>
-  body?: any
+  request: (body?: any) => Promise<AxiosResponse<T, any>>
+  onInit?: boolean
 }
 
-export const useRequest = <T>({ request }: UseRequestProps<T>) => {
+export const useRequest = <T>({
+  request,
+  onInit = true
+}: UseRequestProps<T>) => {
   const [data, setData] = useState<T>()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -24,12 +27,30 @@ export const useRequest = <T>({ request }: UseRequestProps<T>) => {
     }
   }, [request])
 
+  const onRequestPost = useCallback(
+    async (body: T) => {
+      try {
+        setIsLoading(true)
+        const res = await request(body)
+        setData(res.data)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
+      }
+    },
+    [request]
+  )
+
   useEffect(() => {
-    fetchData()
-  }, [fetchData])
+    if (onInit) {
+      fetchData()
+    }
+  }, [fetchData, onInit])
 
   return {
     data,
-    isLoading
+    isLoading,
+    onRequestPost
   }
 }

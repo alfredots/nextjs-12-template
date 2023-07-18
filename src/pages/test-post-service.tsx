@@ -7,6 +7,11 @@ const useTestPostService = () => {
     request: postService.getAll
   })
 
+  const { onRequestPost } = useRequest<Post>({
+    request: postService.savePost,
+    onInit: false
+  })
+
   const saveNewPost = async () => {
     const newPost: Post = {
       id: '12213',
@@ -15,11 +20,7 @@ const useTestPostService = () => {
       createdAt: '2023-07-17T00:35:40.331Z'
     }
 
-    try {
-      await postService.savePost(newPost)
-    } catch (error) {
-      console.log(error)
-    }
+    await onRequestPost(newPost)
   }
 
   return {
