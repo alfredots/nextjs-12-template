@@ -22,7 +22,7 @@
     "baseUrl": "src",
     "paths": {
       "@views/*": ["views/*"],
-      "@hooks/*": ["hooks/*"],
+      "@hooks": ["hooks/index.ts"],
       "@styles/*": ["styles/*"]
     }
   },

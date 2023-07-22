@@ -8,13 +8,13 @@ class PostService extends HttpClient {
     super(Endpoints.external.posts)
   }
 
-  public getAll = async () => {
-    const response = await this.get<GetAllResponse>('')
+  public getAll = async (signal?: AbortSignal) => {
+    const response = await this.get<GetAllResponse>('', { signal })
     return response
   }
 
-  public savePost = async (body: Post) => {
-    const response = await this.post<Post>('', body)
+  public savePost = async (body: Post, signal?: AbortSignal) => {
+    const response = await this.post<Post>('', body, { signal })
     return response
   }
 }

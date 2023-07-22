@@ -1,26 +1,25 @@
-import { useRequest } from '@hooks/useRequest'
+import { useGet, usePost } from '@hooks'
 import { postService } from 'services/PostService'
 import { GetAllResponse, Post } from 'services/PostService/types'
 
 const useTestPostService = () => {
-  const { data: posts, isLoading } = useRequest<GetAllResponse>({
+  const { data: posts, isLoading } = useGet<GetAllResponse>({
     request: postService.getAll
   })
 
-  const { onRequestPost } = useRequest<Post>({
-    request: postService.savePost,
-    onInit: false
+  const { postData } = usePost<Post>({
+    request: postService.savePost
   })
 
   const saveNewPost = async () => {
     const newPost: Post = {
-      id: '12213',
-      title: 'Miru Chan',
-      content: 'lorem ipsum 2',
+      id: '8',
+      title: 'Key do Lovelyz',
+      content: 'lorem ipsum 3',
       createdAt: '2023-07-17T00:35:40.331Z'
     }
 
-    await onRequestPost(newPost)
+    await postData(newPost)
   }
 
   return {
@@ -44,7 +43,7 @@ export default function TestPostService() {
       ))}
       <button
         className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-        onClick={saveNewPost}
+        onClick={() => saveNewPost()}
       >
         save post
       </button>
